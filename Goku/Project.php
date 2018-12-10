@@ -25,13 +25,14 @@ class Project {
      * @param mixed $data
      * @return void
      */
-    public function trigger( $name, $data ) {
+    public function trigger( $name, $data, $processor=null ) {
         $params = array();
         $params['account'] = $this->account;
         $paramsData = array(
             'project' => $this->id,
             'event' => $name,
-            'data'=> json_encode($data)
+            'data'=> json_encode($data),
+            'processor' => $processor,
         );
         $params['data'] = json_encode($paramsData);
         $params['timestamp'] = time();
